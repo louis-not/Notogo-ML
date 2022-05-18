@@ -4,6 +4,7 @@ import tensorflow_datasets as tfds
 import tensorflow as tf
 import os
 import csv
+import pandas as pd
 
 # TODO(my_dataset): Markdown description  that will appear on the catalog page.
 _DESCRIPTION = None
@@ -57,13 +58,28 @@ class Userfeatures(tfds.core.GeneratorBasedBuilder):
   #       'train': self._generate_examples(path / 'train_imgs'),
   #   }
   def _split_generators(self, dl_manager):
-  # Download source data
-  # extracted_path = dl_manager.download_and_extract(...)
+    from google.colab import auth
+    import gspread
+    from google.auth import default
+    from gspread_dataframe import get_as_dataframe, set_with_dataframe
+
+    auth.authenticate_user()
+    creds, _ = default()
+    gc = gspread.authorize(creds)
+    feature = gc.open('capstone_dataset').worksheet('userFeatures')
+    rows = feature.get_all_values()
+    dfFeature = pd.DataFrame.from_records(rows[1:], columns=rows[0])
+    dfFeature = dfFeature[['user_id','location','location_id']].values
+    # extracted_path = dl_manager.download()
   # Specify the splits
-    pathf = '/content/drive/Othercomputers/My Laptop/Bangkit/Capstone/Recommender system/userFeatures'
+    # pathf = '/content/drive/Othercomputers/My Laptop/Bangkit/Capstone/Recommender system/userFeatures'
+    # return {
+    #     'train': self._generate_examples(
+    #         path= os.path.join(pathf,'userFeaturesV2.csv')
+    #         # label_path=extracted_path / 'train_labels.csv',
+    #     ),
     return {
-        'train': self._generate_examples(
-            path= os.path.join(pathf,'userFeaturesV2.csv')
+        'train': self._generate_examples(dfFeature
             # label_path=extracted_path / 'train_labels.csv',
         ),
         # 'test': self._generate_examples(
@@ -77,11 +93,12 @@ class Userfeatures(tfds.core.GeneratorBasedBuilder):
     
     # TODO(my_dataset): Yields (key, example) tuples from the dataset
     # for f in path.glob('*.jpeg'):
-    with open(path) as csv_file:
-      csv_reader = csv.reader(csv_file)
-      for i,row in enumerate(csv_reader):
-        yield i, {
-            'user_id': row[0],
-            'location_name' : row[1], # -> update V2
-            'location_id': row[2]
-        }
+    # with open(path) as csv_file:
+    #   csv_reader = csv.reader(csv_file)
+    #   for i,row in enumerate(csv_reader):
+    for i, data in enumerate(path):
+      yield i, {
+          'user_id': data[0],
+          'location_name' : data[1], # -> update V2
+          'location_id': data[2]
+      }
