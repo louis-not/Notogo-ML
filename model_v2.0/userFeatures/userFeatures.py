@@ -37,6 +37,9 @@ class Userfeatures(tfds.core.GeneratorBasedBuilder):
         features=tfds.features.FeaturesDict({
             # These are the features of your dataset like images, labels ...
             'user_id': tf.string,
+            'like': tf.int32,
+            'add' : tf.int32,
+            'category' : tf.string,
             'location_name' : tf.string,
             'location_id' : tf.string
         }),
@@ -69,7 +72,7 @@ class Userfeatures(tfds.core.GeneratorBasedBuilder):
     feature = gc.open('capstone_dataset').worksheet('userFeatures')
     rows = feature.get_all_values()
     dfFeature = pd.DataFrame.from_records(rows[1:], columns=rows[0])
-    dfFeature = dfFeature[['user_id','location','location_id']].values
+    dfFeature = dfFeature[['user_id',"like", 'add','category','location','location_id']].values
     # extracted_path = dl_manager.download()
   # Specify the splits
     # pathf = '/content/drive/Othercomputers/My Laptop/Bangkit/Capstone/Recommender system/userFeatures'
@@ -99,6 +102,9 @@ class Userfeatures(tfds.core.GeneratorBasedBuilder):
     for i, data in enumerate(path):
       yield i, {
           'user_id': data[0],
-          'location_name' : data[1], # -> update V2
-          'location_id': data[2]
+          'like' : data[1],
+          'add' : data[2],
+          'category' : data[3],
+          'location_name' : data[4], # -> update V2
+          'location_id': data[5]
       }
