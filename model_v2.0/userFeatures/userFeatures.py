@@ -102,8 +102,8 @@ class Userfeatures(tfds.core.GeneratorBasedBuilder):
     for i, data in enumerate(path):
       yield i, {
           'user_id': data[0],
-          'like' : data[1],
-          'add' : data[2],
+          'like' : int(data[1]),
+          'add' : int(data[2]),
           'category' : data[3],
           'location_name' : data[4], # -> update V2
           'location_id': data[5]
