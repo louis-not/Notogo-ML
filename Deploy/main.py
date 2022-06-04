@@ -10,7 +10,7 @@ def main():
     tmp = os.getcwd()
     path = os.path.join(tmp, "Deploy")
     model_path = os.path.join(path, "model")
-    # model_path = train_recommender()
+    model_path = train_recommender()  # comment this line to test recommend()
     # print(model_path)
 
     # load model
