@@ -29,6 +29,7 @@ class Userfeatures(tfds.core.GeneratorBasedBuilder):
           'like': tf.int32,
           'add' : tf.int32,
           'category' : tf.string,
+          # 'location_name' : tf.string,
           'location_id' : tf.string
       }),
       supervised_keys=None,  # Set to `None` to disable
@@ -36,40 +37,39 @@ class Userfeatures(tfds.core.GeneratorBasedBuilder):
       citation=None
     )
 
+  # def _split_generators(self, dl_manager):
+
+  #   # import gspread
+  #   # from google.auth import default
+  #   # from gspread_dataframe import get_as_dataframe, set_with_dataframe
+
+  #   # creds, _ = default()
+  #   # gc = gspread.authorize(creds)
+  #   # feature = gc.open('capstone_dataset').worksheet('userFeatures(coldstartsol)')
+  #   # rows = feature.get_all_values()
+  #   # dfFeature = pd.DataFrame.from_records(rows[1:], columns=rows[0])
+  #   # dfFeature = dfFeature[['user_id',"like", 'add','category','location_id']].values
+
   def _split_generators(self, dl_manager):
-
-    # import gspread
-    # from google.auth import default
-    # from gspread_dataframe import get_as_dataframe, set_with_dataframe
-
-    # creds, _ = default()
-    # gc = gspread.authorize(creds)
-    # feature = gc.open('capstone_dataset').worksheet('userFeatures(coldstartsol)')
-    # rows = feature.get_all_values()
-    # dfFeature = pd.DataFrame.from_records(rows[1:], columns=rows[0])
-    # dfFeature = dfFeature[['user_id',"like", 'add','category','location_id']].values
-
     cnx = mysql.connector.connect(user = 'root', password = '1234', host = '34.101.251.5', database = 'notogo')
     cursor = cnx.cursor()
 
     query = ("select * from user_features")
     cursor.execute(query)
 
-    columns =['user_id', 'like', 'add', 'category','location_id']
+    columns =['user_id', 'like', 'add', 'category', 'location','location_id']
     dfUserFeat = pd.DataFrame(cursor.fetchall(), columns = columns)
 
     dfUserFeat['location_id'] = dfUserFeat['location_id'].astype(str)
+    dfUserFeat['like'] = dfUserFeat['like'].astype(int)
+    dfUserFeat['add'] = dfUserFeat['add'].astype(int)
     dfUserFeat['user_id'] = dfUserFeat['user_id'].astype(str)
 
-    dfFeature = dfUserFeat[['user_id',"like", 'add','category','location_id']].values
-
+    dfFeature = dfUserFeat[['user_id',"like", 'add','category','location','location_id']].values    
     return {
-        'train': self._generate_examples(
-          dfFeature
-            # label_path=extracted_path / 'train_labels.csv',
-        )
+        'train': self._generate_examples(dfFeature),
     }
-
+    
   def _generate_examples(self, path):
     """Yields examples."""
     for i, data in enumerate(path):
@@ -78,5 +78,6 @@ class Userfeatures(tfds.core.GeneratorBasedBuilder):
           'like' : int(data[1]),
           'add' : int(data[2]),
           'category' : data[3],
+          # 'location_name' : data[4], # -> update V2
           'location_id': data[5]
       }

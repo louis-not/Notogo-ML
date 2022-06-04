@@ -5,23 +5,28 @@ import numpy as np
 
 class NoToGoModel(tfrs.models.Model):
 
-  def __init__(self, input: dict ,rating_weight: float, like_weight: float,retrieval_weight: float) -> None:
+  def __init__(self, 
+              input: dict ,
+              rating_weight: float,
+              like_weight: float,
+              retrieval_weight: float) -> None:
     # We take the loss weights in the constructor: this allows us to instantiate
     # several model objects with different loss weights.
     
     super().__init__()
 
-    embedding_dimension = 41
+    self.BATCH_SIZE = 180
+    self.EMB_DIM = 41
 
     # Variables & input pipeline
     self.ratings = input['ratings']
     self.locations = input['locations']
 
-    self.location_id = self.locations.batch(1000) 
+    location_id = self.locations.batch(1000) 
     self.user_ids = self.ratings.batch(1000).map(lambda x: x["user_id"])
 
     # self.unique_location_id = np.unique(np.concatenate(list(self.location_id)))
-    unique_location_id = np.unique(np.concatenate(list(self.location_id)))
+    unique_location_id = np.unique(np.concatenate(list(location_id)))
     # self.unique_user_ids = np.unique(np.concatenate(list(self.user_ids)))
     unique_user_ids = np.unique(np.concatenate(list(self.user_ids)))
     
@@ -29,14 +34,14 @@ class NoToGoModel(tfrs.models.Model):
     self.location_model: tf.keras.layers.Layer = tf.keras.Sequential([
       tf.keras.layers.StringLookup(
         vocabulary=unique_location_id, mask_token=None),
-      tf.keras.layers.Embedding(len(unique_location_id) + 1, embedding_dimension),
+      tf.keras.layers.Embedding(len(unique_location_id) + 1, self.EMB_DIM),
       tf.keras.layers.Dense(16, activation="relu")
     ])
 
     self.user_model: tf.keras.layers.Layer = tf.keras.Sequential([
       tf.keras.layers.StringLookup(
-        vocabulary=unique_user_ids , mask_token=None),
-      tf.keras.layers.Embedding(len(self.user_ids ) + 1, embedding_dimension),
+        vocabulary=unique_user_ids, mask_token=None),
+      tf.keras.layers.Embedding(len(unique_user_ids) + 1, self.EMB_DIM),
       tf.keras.layers.Dense(16, activation="relu")
     ])
 
@@ -64,7 +69,7 @@ class NoToGoModel(tfrs.models.Model):
     )
     self.retrieval_task: tf.keras.layers.Layer = tfrs.tasks.Retrieval(
         metrics=tfrs.metrics.FactorizedTopK(
-            candidates=self.locations.batch(180).map(self.location_model)
+            candidates=self.locations.batch(self.BATCH_SIZE).map(self.location_model)
         )
     )
 
