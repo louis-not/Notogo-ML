@@ -1,0 +1,4 @@
+tensorflow==2.8.0
+tensorflow_datasets==4.5.2
+mysql.connector==2.2.9
+google.cloud==0.34.0
