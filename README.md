@@ -1,2 +1,16 @@
 # Notogo-ML
 Notogo Recommender System using two tower model
+
+# Dataset 
+...
+
+# ML Architecture
+... 
+
+# ML Evaluation
+... 
+
+# ML Deployment
+...
+...
+
