@@ -13,8 +13,8 @@ Notogo Recommender System using two tower model
 # ML Deployment
 Inside Notogo-ML/Deploy we could see the deployment script for this application. 
 - `NoToGoModel.py` : contained the recommender system model with as a NotogoModel class
--- `__init__` : create model architecture and intialize input & output
--- `call` : pick feature 
--- `compute_loss` : compute loss on rating_task, like_task and retrieval_task and return the generated loss based on input weight
+<br> `__init__` : create model architecture and intialize input & output
+<br> `call` : pick feature 
+<br> `compute_loss` : compute loss on rating_task, like_task and retrieval_task and return the generated loss based on input weight
 - `training.py` : contained `train_recommender()` function and would return the saved model path
 - `recommender.py` : contained `recommend()` function and would return recommended location_id based on user_id
