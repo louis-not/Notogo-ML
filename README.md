@@ -5,7 +5,7 @@ Notogo Recommender System using Multitask Recommender System
 ...
 
 # ML Architecture
-We use Multi-task Recommender model by Tensorflow Recommenders.
+We use the Multi-task Recommender model by Tensorflow Recommenders.
 
 <p>This is our model architecture :</p>
 
