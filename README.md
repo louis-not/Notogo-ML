@@ -6,7 +6,7 @@ Notogo Recommender System using Multitask Recommender System
 
 # ML Architecture
 <p align="left">
-    <img src="contents/model architecture.png" alt="Model Architecture" height="300">
+    <img src="contents/model architecture.png" alt="Model Architecture" height="500">
 </p>
 
 # ML Evaluation
