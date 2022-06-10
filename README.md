@@ -1,5 +1,5 @@
 # Notogo-ML
-Notogo Recommender System using two tower model
+Notogo Recommender System using Multitask Recommender System
 
 # Dataset 
 ...
