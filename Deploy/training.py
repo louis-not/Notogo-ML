@@ -12,15 +12,18 @@ def train_recommender():
     from NoToGoModel import NoToGoModel
     import os
 
+    import userFeatures
+    import wishEmbedding
+
     print("Training Begin")
     # Training Data
-    tfds.builder('Wishembedding')
+    builder = tfds.builder('Wishembedding')
     wishEmbeddingDs = tfds.load('Wishembedding',split='train')
     
-    tfds.builder('Userfeatures')
+    builder = tfds.builder('Userfeatures')
     userFeatureDs = tfds.load('Userfeatures',split='train')
-    queries = userFeatureDs.map(lambda x: x["user_id"])
-    print(f"Num of data: {len(queries)}")
+    # queries = userFeatureDs.map(lambda x: x["user_id"])
+    # print(f"Num of data: {len(queries)}")
 
     locations = wishEmbeddingDs.map(lambda x: x["location_id"])
     ratings = userFeatureDs.map(lambda x: {
