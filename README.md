@@ -13,7 +13,7 @@ We use the Multi-task Recommender model by Tensorflow Recommenders.
     <img src="contents/model architecture.png" alt="Model Architecture" height="500">
 </p>
 
-<p>Multitasking means that our model has multiple objectives. Our model has 3 objectives, I.e predicting whether users will `add` the recommendation result to their wishlist, predicting whether users will `like` the recommendation result or not, and giving users the recommendation `(retrieval)`. </p>
+<p>Multitasking means that our model has multiple objectives. Our model has 3 objectives, I.e predicting whether users will <b>add</b> the recommendation result to their wishlist, predicting whether users will <b>like</b> the recommendation result or not, and giving users the recommendation <b>(retrieval)</b>. </p>
 
 # ML Evaluation
 ... 
