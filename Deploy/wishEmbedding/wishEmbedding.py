@@ -39,8 +39,7 @@ class Wishembedding(tfds.core.GeneratorBasedBuilder):
         description= _DESCRIPTION,
         features=tfds.features.FeaturesDict({
             # These are the features of your dataset like images, labels ...
-            'location_id' : tf.string,
-            'location_name' : tf.string
+            'location_id' : tf.string
         }),
         # If there's a common (input, target) tuple from the
         # features, specify them here. They'll be used if
@@ -70,6 +69,7 @@ class Wishembedding(tfds.core.GeneratorBasedBuilder):
 
     columns =['location_id', 'location', 'coordinates', 'like_count', 'add_count','rating']
     dfWishFeat = pd.DataFrame(cursor.fetchall(), columns = columns)
+    dfWishFeat['location_id'] = dfWishFeat['location_id'].astype(str)
 
   
     dfWishFeature = dfWishFeat.values
@@ -95,6 +95,5 @@ class Wishembedding(tfds.core.GeneratorBasedBuilder):
     #   csv_reader = csv.reader(csv_file)
     #   for i,row in enumerate(csv_reader):
       yield i, {
-          'location_id' : data[0],
-          'location_name': data[1]
+          'location_id' : data[0]
       }

@@ -43,7 +43,6 @@ class Userfeatures(tfds.core.GeneratorBasedBuilder):
             'like': tf.int32,
             'add' : tf.int32,
             'category' : tf.string,
-            'location_name' : tf.string,
             'location_id' : tf.string
         }),
         # If there's a common (input, target) tuple from the
@@ -61,7 +60,7 @@ class Userfeatures(tfds.core.GeneratorBasedBuilder):
     query = ("select * from user_features")
     cursor.execute(query)
 
-    columns =['user_id', 'like', 'add', 'category', 'location','location_id']
+    columns =['id','user_id', 'like', 'add', 'category', 'location_name','location_id']
     dfUserFeat = pd.DataFrame(cursor.fetchall(), columns = columns)
 
     dfUserFeat['location_id'] = dfUserFeat['location_id'].astype(str)
@@ -69,7 +68,7 @@ class Userfeatures(tfds.core.GeneratorBasedBuilder):
     dfUserFeat['add'] = dfUserFeat['add'].astype(int)
     dfUserFeat['user_id'] = dfUserFeat['user_id'].astype(str)
 
-    dfFeature = dfUserFeat[['user_id',"like", 'add','category','location','location_id']].values
+    dfFeature = dfUserFeat[['user_id',"like", 'add','category','location_name','location_id']].values
     return {
         'train': self._generate_examples(dfFeature),
         # 'test': self._generate_examples(
@@ -84,10 +83,9 @@ class Userfeatures(tfds.core.GeneratorBasedBuilder):
     # TODO(my_dataset): Yields (key, example) tuples from the dataset
     for i, data in enumerate(path):
       yield i, {
-          'user_id': data[0],
-          'like' : int(data[1]),
-          'add' : int(data[2]),
-          'category' : data[3],
-          'location_name' : data[4], # -> update V2
-          'location_id': data[5]
+          'user_id': data[1],
+          'like' : int(data[2]),
+          'add' : int(data[3]),
+          'category' : data[4],
+          'location_id': data[6]
       }

@@ -15,20 +15,20 @@ class NoToGoModel(tfrs.models.Model):
     
     super().__init__()
 
-    self.BATCH_SIZE = 180
-    self.EMB_DIM = 41
+    self.BATCH_SIZE = 165
+    self.EMB_DIM = 57
 
     # Variables & input pipeline
     self.ratings = input['ratings']
     self.locations = input['locations']
 
     location_id = self.locations.batch(1000) 
-    self.user_ids = self.ratings.batch(1000).map(lambda x: x["user_id"])
+    user_ids = self.ratings.batch(1000).map(lambda x: x["user_id"])
 
-    # self.unique_location_id = np.unique(np.concatenate(list(self.location_id)))
+    # self.unique_location_id = np.unique(np.concatenate(list(location_id)))
     unique_location_id = np.unique(np.concatenate(list(location_id)))
     # self.unique_user_ids = np.unique(np.concatenate(list(self.user_ids)))
-    unique_user_ids = np.unique(np.concatenate(list(self.user_ids)))
+    unique_user_ids = np.unique(np.concatenate(list(user_ids)))
     
     # User and movie models.
     self.location_model: tf.keras.layers.Layer = tf.keras.Sequential([
