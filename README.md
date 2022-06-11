@@ -1,5 +1,4 @@
 # Notogo-ML
-![tensorflow-badge]
 Notogo Recommender System using Multitask Recommender System
 
 # Dataset 
