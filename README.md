@@ -1,5 +1,5 @@
 # Notogo-ML
-Notogo Recommender System using Multitask [Recommender System.](https://www.tensorflow.org/recommenders/examples/multitask)
+Notogo Recommender System using [Multitask Recommender System.](https://www.tensorflow.org/recommenders/examples/multitask)
 
 # Dataset 
 ...
