@@ -42,4 +42,5 @@ Inside Notogo-ML/Deploy-API we could see the deployment script for this applicat
 
 Here is the following step to deploy the model to the Cloud Run:
 - Install the  Google Cloud SDK Shell, you can find the tutorial [Here.](https://www.youtube.com/watch?v=k-8qFh8EfFA)
-- Open the Google Cloud SDK Shell and change the directory to the folder that contains all files in the `Notogo-ML/Deploy-API` 
+- Open the Google Cloud SDK Shell and change the directory to the folder that contains all files in the `Notogo-ML/Deploy-API`
+- Type `gcloud auth login` in the Google Cloud SDK Shell to login to the GCP
