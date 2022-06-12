@@ -16,7 +16,11 @@ We use the Multi-task Recommender model by Tensorflow Recommenders.
 <p>Multitasking means that our model has multiple objectives. Our model has 3 objectives, I.e predicting whether users will <b>add</b> the recommendation result to their wishlist, predicting whether users will <b>like</b> the recommendation result or not, and giving users the recommendation <b>(retrieval)</b>. </p>
 
 ## ML Evaluation
-Full link [here](https://docs.google.com/spreadsheets/d/1WrgL-iTQBquAcbi89h_QD4-CZyZfo9QhmSbdR5TxZ68/edit?usp=sharing)
+Full Evaluation [here](https://docs.google.com/spreadsheets/d/1WrgL-iTQBquAcbi89h_QD4-CZyZfo9QhmSbdR5TxZ68/edit?usp=sharing)
+<br> Last Model :
+<br> v2.3 
+<br> Top_10_categorical_accuracy (TRAIN): 0.6076
+<br> Top_10_categorical_accuracy (TEST) : 0.6393
 
 ## ML Deployment
 Inside Notogo-ML/Deploy we could see the deployment script for this application. 
