@@ -30,7 +30,7 @@ Full Evaluation [here](https://docs.google.com/spreadsheets/d/1WrgL-iTQBquAcbi89
 <br> Top_10_categorical_accuracy (TEST) : 0.6393
 
 ## ML Deployment
-Inside Notogo-ML/Deploy we could see the deployment script for this application. 
+Inside Notogo-ML/Deploy-API we could see the deployment script for this application. 
 - `NoToGoModel.py` : contained the recommender system model with as a NotogoModel class
 <br> `__init__` : create model architecture and intialize input & output
 <br> `call` : pick feature 
