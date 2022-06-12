@@ -41,3 +41,4 @@ Inside Notogo-ML/Deploy-API we could see the deployment script for this applicat
 - `Dockerfile` : contains all the commands a user could call on the command line to assemble an image, such as specifying the base image, copying all code needed, installing libraries, etc
 
 Here is the following step to deploy the model to the Cloud Run:
+- install the  Google Cloud SDK Shell, you can find the tutorial [Here.](https://www.youtube.com/watch?v=k-8qFh8EfFA) 
