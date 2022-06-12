@@ -37,3 +37,6 @@ Inside Notogo-ML/Deploy we could see the deployment script for this application.
 <br> `compute_loss` : compute loss on rating_task, like_task and retrieval_task and return the generated loss based on input weight
 - `training.py` : contained `train_recommender()` function and would return the saved model path
 - `recommender.py` : contained `recommend()` function and would return recommended location_id based on user_id
+- `main.py` : Flask API, contained 3 class, i.e `HomePage()`, `Recommendation()`, and `Training()`
+- `Dockerfile` : contains all the commands a user could call on the command line to assemble an image, such as specifying the base image, copying all code needed, installing libraries, etc
+- 
