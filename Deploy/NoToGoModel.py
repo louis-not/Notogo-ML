@@ -15,7 +15,7 @@ class NoToGoModel(tfrs.models.Model):
     
     super().__init__()
 
-    self.BATCH_SIZE = 180
+    self.BATCH_SIZE = 1000
     self.EMB_DIM = 15
 
     # Variables & input pipeline
@@ -35,14 +35,14 @@ class NoToGoModel(tfrs.models.Model):
       tf.keras.layers.StringLookup(
         vocabulary=unique_location_id, mask_token=None),
       tf.keras.layers.Embedding(len(unique_location_id) + 1, self.EMB_DIM),
-      tf.keras.layers.Dense(8, activation="relu")
+      tf.keras.layers.Dense(16, activation="relu")
     ])
 
     self.user_model: tf.keras.layers.Layer = tf.keras.Sequential([
       tf.keras.layers.StringLookup(
         vocabulary=unique_user_ids, mask_token=None),
       tf.keras.layers.Embedding(len(unique_user_ids) + 1, self.EMB_DIM),
-      tf.keras.layers.Dense(8, activation="relu")
+      tf.keras.layers.Dense(16, activation="relu")
     ])
 
     self.rating_model = tf.keras.Sequential([

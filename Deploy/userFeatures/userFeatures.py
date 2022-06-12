@@ -57,7 +57,7 @@ class Userfeatures(tfds.core.GeneratorBasedBuilder):
     cnx = mysql.connector.connect(user = 'root', password = '1234', host = '34.101.251.5', database = 'notogo')
     cursor = cnx.cursor()
 
-    query = ("select * from user_features")
+    query = ("select * from user_features2")
     cursor.execute(query)
 
     columns =['id','user_id', 'like', 'add', 'category', 'location_name','location_id']

@@ -49,7 +49,7 @@ def train_recommender():
     model = NoToGoModel(input=parameter, rating_weight=0.0, like_weight = 0, retrieval_weight=1.0)
     model.compile(optimizer=tf.keras.optimizers.Adagrad(0.071478))
 
-    model.fit(cached_train, epochs=4)
+    model.fit(cached_train, epochs=5)
     metrics = model.evaluate(cached_test, return_dict=True)
 
     print(f"Retrieval top-100 accuracy: {metrics['factorized_top_k/top_100_categorical_accuracy']:.3f}.")
