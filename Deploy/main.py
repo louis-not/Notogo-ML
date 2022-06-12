@@ -27,7 +27,7 @@ def main():
 
     # load model
     limit = 5
-    user_id = '20'
+    user_id = '183'
     result = recommend(model_path, user_id, limit)
 
     print(f"Recommendations {user_id}: {result[0][:limit]}")

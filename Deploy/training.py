@@ -47,9 +47,9 @@ def train_recommender():
     }
 
     model = NoToGoModel(input=parameter, rating_weight=0.0, like_weight = 0, retrieval_weight=1.0)
-    model.compile(optimizer=tf.keras.optimizers.Adagrad(0.09478))       
+    model.compile(optimizer=tf.keras.optimizers.Adagrad(0.071478))
 
-    model.fit(cached_train, epochs=5)
+    model.fit(cached_train, epochs=4)
     metrics = model.evaluate(cached_test, return_dict=True)
 
     print(f"Retrieval top-100 accuracy: {metrics['factorized_top_k/top_100_categorical_accuracy']:.3f}.")
@@ -63,11 +63,11 @@ def train_recommender():
         tf.data.Dataset.zip((locations.batch(100), locations.batch(100).map(model.location_model)))
     )
     # Inference test
-    _, titles = index(tf.constant(["22"]))
+    _, titles = index(tf.constant(["0"]))
     print(f"Recommendations for user 0: {titles[0, :10]}")
 
-    _, titles = index(tf.constant(["120"]))
-    print(f"Recommendations for user 120: {titles[0, :10]}")
+    _, titles = index(tf.constant(["30"]))
+    print(f"Recommendations for user 30: {titles[0, :10]}")
 
     _, titles = index(tf.constant(["183"]))
     print(f"Recommendations for user 183: {titles[0, :10]}")
