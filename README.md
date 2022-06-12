@@ -2,7 +2,14 @@
 Notogo Recommender System using [Multitask Recommenders System.](https://www.tensorflow.org/recommenders/examples/multitask)
 
 ## Dataset 
-...
+Google Sheet [here](https://docs.google.com/spreadsheets/d/1WNQAsPDfus-rihmvLX5MbUR8dNTth3rm9YK5-6ekUIY/edit#gid=572466784)
+| User Embedding  | Wish Embedding | User Features | Wish Features |
+| --------------- | -------------- | ------------- | ------------- |
+| user_id         | id             | user_id       | id            |
+| user_age        | categories     | user_like     | like_count    |
+| user_domicle    | coordinate     | user_add      | add_count     |
+| user_occupation |                | location_id   | rating        |
+
 
 ## ML Architecture
 We use the Multi-task Recommender model by Tensorflow Recommenders.
