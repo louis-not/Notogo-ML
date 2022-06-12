@@ -39,4 +39,5 @@ Inside Notogo-ML/Deploy-API we could see the deployment script for this applicat
 - `recommender.py` : contained `recommend()` function and would return recommended location_id based on user_id
 - `main.py` : Flask API, contained 3 class, i.e `HomePage()`, `Recommendation()`, and `Training()`
 - `Dockerfile` : contains all the commands a user could call on the command line to assemble an image, such as specifying the base image, copying all code needed, installing libraries, etc
-- 
+
+Here is the following step to deploy the model to the Cloud Run:
