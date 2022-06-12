@@ -1,10 +1,10 @@
 # Notogo-ML
 Notogo Recommender System using [Multitask Recommenders System.](https://www.tensorflow.org/recommenders/examples/multitask)
 
-# Dataset 
+## Dataset 
 ...
 
-# ML Architecture
+## ML Architecture
 We use the Multi-task Recommender model by Tensorflow Recommenders.
 
 <p>This is our model architecture :</p>
@@ -15,10 +15,10 @@ We use the Multi-task Recommender model by Tensorflow Recommenders.
 
 <p>Multitasking means that our model has multiple objectives. Our model has 3 objectives, I.e predicting whether users will <b>add</b> the recommendation result to their wishlist, predicting whether users will <b>like</b> the recommendation result or not, and giving users the recommendation <b>(retrieval)</b>. </p>
 
-# ML Evaluation
+## ML Evaluation
 ... 
 
-# ML Deployment
+## ML Deployment
 Inside Notogo-ML/Deploy we could see the deployment script for this application. 
 - `NoToGoModel.py` : contained the recommender system model with as a NotogoModel class
 <br> `__init__` : create model architecture and intialize input & output
