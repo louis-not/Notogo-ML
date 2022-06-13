@@ -54,7 +54,7 @@ class Userfeatures(tfds.core.GeneratorBasedBuilder):
     )
 
   def _split_generators(self, dl_manager):
-    cnx = mysql.connector.connect(user = 'root', password = '1234', host = '34.101.251.5', database = 'notogo')
+    cnx = mysql.connector.connect(user = '', password = '', host = '', database = '')
     cursor = cnx.cursor()
 
     query = ("select * from user_features2")

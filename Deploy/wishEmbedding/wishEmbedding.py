@@ -62,7 +62,7 @@ class Wishembedding(tfds.core.GeneratorBasedBuilder):
   # Download source data
   # extracted_path = dl_manager.download_and_extract(...)
   # Specify the splits
-    cnx = mysql.connector.connect(user = 'root', password = '1234', host = '34.101.251.5', database = 'notogo')
+    cnx = mysql.connector.connect(user = '', password = '', host = '', database = '')
     cursor = cnx.cursor()
     query = ("select * from wish_features")
     cursor.execute(query)
