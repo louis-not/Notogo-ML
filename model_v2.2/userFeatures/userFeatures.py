@@ -91,8 +91,7 @@ class Userfeatures(tfds.core.GeneratorBasedBuilder):
         # ),
     }
 
-  def _generate_examples(self, path):
-    """Yields examples."""
+  
     
     # TODO(my_dataset): Yields (key, example) tuples from the dataset
     # for f in path.glob('*.jpeg'):
