@@ -22,7 +22,7 @@ We use the Multi-task Recommender model by Tensorflow Recommenders.
 
 <p>Multitasking means that our model has multiple objectives. Our model has 3 objectives, I.e predicting whether users will <b>add</b> the recommendation result to their wishlist, predicting whether users will <b>like</b> the recommendation result or not, and giving users the recommendation <b>(retrieval)</b>. </p>
 
-</p>However, our model only focuses on retrieval task, but still get information from the other 2 tasks (transfer learning). We can focus on the retrieval task only by setting the weight parameter when initializing the `NoToGo()` model class </p> 
+</p>However, our model only focuses on retrieval task, but still get information from the other 2 tasks (transfer learning). We can focus on the retrieval task only by setting the weight parameter when initializing the `gcloud auth login` model class </p> 
 
 ## ML Evaluation
 Full Evaluation [here](https://docs.google.com/spreadsheets/d/1WrgL-iTQBquAcbi89h_QD4-CZyZfo9QhmSbdR5TxZ68/edit?usp=sharing)
